@@ -146,4 +146,50 @@ input{
     }
 }
 
+/* ===== MOBILE FIX ===== */
+@media screen and (max-width: 768px) {
 
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .grid {
+        display: block;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .cardItem {
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    #wallet {
+        font-size: 12px;
+        word-break: break-all;
+    }
+}
+
+/* ===== DESKTOP ===== */
+@media screen and (min-width: 769px) {
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
