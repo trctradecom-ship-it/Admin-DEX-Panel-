@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin DEX Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔥 Admin DEX Panel</h1>
+
+<button id="connectBtn" class="mainBtn">Connect Wallet</button>
+
+<p id="wallet">Not Connected</p>
+<p id="status"></p>
+
+<div class="card">
+<h2>📊 Contract Info</h2>
+
+<div class="grid">
+<div>
+Contract Balance<br>
+<span id="contractBalance">0</span> POL
+</div>
+
+<div>
+Available Liquidity<br>
+<span id="availableLiquidity">0</span> POL
+</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>💸 Withdraw Controls</h2>
+
+<button id="withdrawAllBtn">Withdraw ALL Liquidity</button>
+
+<div class="inputBox">
+<input id="withdrawAmount" placeholder="Enter POL amount">
+<button id="withdrawAmountBtn">Withdraw Amount</button>
+</div>
+
+<button id="withdrawTaxBtn">Withdraw Sell Tax</button>
+
+<div class="inputBox">
+<input id="withdrawTRC" placeholder="Enter TRC amount">
+<button id="withdrawTRCBtn">Withdraw Unsold TRC</button>
+</div>
+
+</div>
+
+<div class="card">
+<h2>📈 Liquidity Chart</h2>
+<canvas id="chart"></canvas>
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
