@@ -1,0 +1,76 @@
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f172a;
+    color:#fff;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+    text-align:center;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+.mainBtn{
+    background:#22c55e;
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin-top:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    margin-top:10px;
+    cursor:pointer;
+    background:#3b82f6;
+    color:white;
+}
+
+button:hover{
+    background:#2563eb;
+}
+
+.inputBox{
+    margin-top:10px;
+}
+
+input{
+    padding:10px;
+    border-radius:6px;
+    border:none;
+    width:60%;
+}
+
+#wallet{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+#status{
+    margin-top:10px;
+    color:#22c55e;
+}
