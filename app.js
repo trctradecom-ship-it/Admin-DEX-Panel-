@@ -112,6 +112,41 @@ document.getElementById("withdrawTRCBtn").onclick = () => {
     handleTx(contract.withdrawUnsoldTRC(ethers.utils.parseUnits(amt,18)));
 };
 
+
+// ================= USDT BUTTONS =================
+
+// Withdraw ALL USDT
+document.getElementById("withdrawAllUSDTBtn").onclick = async () => {
+    if(!contract) return alert("Connect wallet first");
+    await handleTx(contract.withdrawAllUSDTLiquidity());
+};
+
+// Withdraw specific USDT
+document.getElementById("withdrawUSDTBtn").onclick = async () => {
+    if(!contract) return alert("Connect wallet first");
+
+    const amt = document.getElementById("withdrawUSDTAmount").value;
+
+    if(!amt || Number(amt) <= 0){
+        alert("Enter valid USDT amount");
+        return;
+    }
+
+    await handleTx(
+        contract.withdrawUSDT(
+            ethers.utils.parseUnits(amt, 6)
+        )
+    );
+};
+
+// Withdraw USDT TAX
+document.getElementById("withdrawUSDTTaxBtn").onclick = async () => {
+    if(!contract) return alert("Connect wallet first");
+    await handleTx(contract.withdrawUSDTTax());
+};
+
+
+
 // ================= CHART =================
 function initChart(){
 
