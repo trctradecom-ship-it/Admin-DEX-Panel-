@@ -6,7 +6,7 @@ const abi = [
     "function owner() view returns(address)",
     "function withdrawAllLiquidity()",
     "function withdrawLiquidity(uint256)",
-    "function withdrawSellTax()",
+    "function withdrawPOLTax()",
     "function withdrawUnsoldTRC(uint256)",
     "function getContractPOLBalance() view returns(uint256)",
     "function getAvailableLiquidity() view returns(uint256)",
@@ -111,8 +111,9 @@ document.getElementById("withdrawAmountBtn").onclick = () => {
     handleTx(contract.withdrawLiquidity(ethers.utils.parseEther(amt)));
 };
 
-document.getElementById("withdrawTaxBtn").onclick = () => {
-    handleTx(contract.withdrawSellTax());
+document.getElementById("withdrawTaxBtn").onclick = async () => {
+    if(!contract) return alert("Connect wallet first");
+    await handleTx(contract.withdrawPOLTax());
 };
 
 document.getElementById("withdrawTRCBtn").onclick = () => {
