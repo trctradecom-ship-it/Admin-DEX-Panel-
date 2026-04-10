@@ -14,7 +14,8 @@ const abi = [
     "function withdrawAllUSDTLiquidity()",
     "function withdrawUSDT(uint256)",
     "function withdrawUSDTTax()",
-    "function getUSDTTax() view returns(uint256)"
+    "function getUSDTTax() view returns(uint256)",
+    "function getPOLTax() view returns(uint256)"
 ];
 
 // ================= CONNECT =================
@@ -57,12 +58,15 @@ async function loadData(){
     const available = await contract.getAvailableLiquidity();
     const usdtLiquidity = await contract.getUSDTLiquidity();
     const usdtTax = await contract.getUSDTTax();
-
+    const polTax = await contract.getPOLTax();
+    
     const usdtTaxF = ethers.utils.formatUnits(usdtTax, 6);
     const usdtF = ethers.utils.formatUnits(usdtLiquidity, 6);
     const totalF = ethers.utils.formatEther(total);
     const availF = ethers.utils.formatEther(available);
-
+    const polTaxF = ethers.utils.formatEther(polTax);
+   
+    document.getElementById("polTaxBalance").innerText = polTaxF;
     document.getElementById("contractBalance").innerText = totalF;
     document.getElementById("availableLiquidity").innerText = availF;
     document.getElementById("usdtLiquidity").innerText = usdtF;
