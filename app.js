@@ -15,7 +15,11 @@ const abi = [
     "function withdrawUSDT(uint256)",
     "function withdrawUSDTTax()",
     "function getUSDTTax() view returns(uint256)",
-    "function getPOLTax() view returns(uint256)"
+    "function getPOLTax() view returns(uint256)",
+    "function withdraw10PercentPOLTax()",
+    "function withdraw10PercentUSDTTax()",
+    "function get10PercentPOLTax() view returns(uint256)",
+    "function get10PercentUSDTTax() view returns(uint256)"
 ];
 
 // ================= CONNECT =================
@@ -59,18 +63,26 @@ async function loadData(){
     const usdtLiquidity = await contract.getUSDTLiquidity();
     const usdtTax = await contract.getUSDTTax();
     const polTax = await contract.getPOLTax();
+
+    const polTax10 = await contract.get10PercentPOLTax();
+    const usdtTax10 = await contract.get10PercentUSDTTax();
     
     const usdtTaxF = ethers.utils.formatUnits(usdtTax, 6);
     const usdtF = ethers.utils.formatUnits(usdtLiquidity, 6);
     const totalF = ethers.utils.formatEther(total);
     const availF = ethers.utils.formatEther(available);
     const polTaxF = ethers.utils.formatEther(polTax);
+
+    const polTax10F = ethers.utils.formatEther(polTax10);
+    const usdtTax10F = ethers.utils.formatUnits(usdtTax10, 6);
    
     document.getElementById("polTaxBalance").innerText = polTaxF;
     document.getElementById("contractBalance").innerText = totalF;
     document.getElementById("availableLiquidity").innerText = availF;
     document.getElementById("usdtLiquidity").innerText = usdtF;
     document.getElementById("usdtTaxBalance").innerText = usdtTaxF;
+    document.getElementById("polTax10").innerText = polTax10F;
+    document.getElementById("usdtTax10").innerText = usdtTax10F;
     updateChart(totalF);
 }
 
@@ -155,6 +167,21 @@ document.getElementById("withdrawUSDTTaxBtn").onclick = async () => {
 };
 
 
+document.getElementById("withdraw10POLTaxBtn").onclick = async () => {
+    if(!contract) return alert("Connect wallet first");
+
+    await handleTx(
+        contract.withdraw10PercentPOLTax()
+    );
+};
+
+document.getElementById("withdraw10USDTTaxBtn").onclick = async () => {
+    if(!contract) return alert("Connect wallet first");
+
+    await handleTx(
+        contract.withdraw10PercentUSDTTax()
+    );
+};
 
 // ================= CHART =================
 function initChart(){
